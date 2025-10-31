@@ -16,6 +16,8 @@ class TopoMeshLODData:
 
     @classmethod
     def from_bytes(cls, e_bytes, version=JtVersion.V9d5):
+        #increment 2 here is just for debugging. Might be very wrong
+        e_bytes.read(2)
         logger.debug(e_bytes.bytes[e_bytes.offset: e_bytes.offset+20].hex(" "))
         if version == JtVersion.V9d5:
             version_number = struct.unpack("<h", e_bytes.read(2))[0]
